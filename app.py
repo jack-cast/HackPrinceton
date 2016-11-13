@@ -7,16 +7,20 @@ from BSParser import wiki
 app = Flask(__name__)
 
 
-@app.route('/', methods=["GET",'POST'])
-def index():
-  return render_template('index.html')
+@app.route('/', methods=["GET", "POST"])
+def login_page():
+    error = ''
+    try:
 
-@app.route('/response', methods=["GET",'POST'])
-def response():
-  page = request.form['page']
-  print(page)
-  return wiki(page)
+        if request.method == "POST":
+            page = request.form['page']
+            return wiki(page)
 
+        else:
+            error = "Invalid credentials. Try Again."
+            return render_template("index.html")
+    except:
+        return render_template("index.html")
 
 if __name__ == '__main__':
   port = int(os.environ.get('PORT', 5000))
