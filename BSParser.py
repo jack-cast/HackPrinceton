@@ -1,13 +1,13 @@
 from bs4 import BeautifulSoup
 import urllib.request
 
-# print('All Paths Lead to Philosophy')
-# print('')
-# print('By starting with a random page on Wikipedia, if you successively follow the first link on each page, you will end up on the Philosophy page in 98' + str('%') + ' of cases!')
-# print('')
+print('All Paths Lead to Philosophy')
+print('')
+print('By starting with a random page on Wikipedia, if you successively follow the first link on each page, you will end up on the Philosophy page in 98' + str('%') + ' of cases!')
+print('')
+
 def wiki(page):
 	path = []
-	# page = str(input('Enter the title of a valid Wikipedia page and find your path to Philosophy:'))
 	print('')
 	html_doc = urllib.request.urlopen('https://en.wikipedia.org/wiki/' + page)
 
@@ -76,5 +76,5 @@ def wiki(page):
 	else:
 		return 'Your page does not lead to Philosophy because it gets caught in the following loop: ' + str(path)
 
-if __name__ == "__main__":
-	print(wiki("bottle"))
+page = str(input('Enter the title of a valid Wikipedia page and find your path to Philosophy:'))
+print(wiki(page))
