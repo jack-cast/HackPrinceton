@@ -1,7 +1,5 @@
 import os
-
-from flask import Flask, render_template, request, redirect, url_for
-
+from flask import Flask, render_template, request
 from BSParser import wiki
 
 app = Flask(__name__)
@@ -9,13 +7,10 @@ app = Flask(__name__)
 
 @app.route('/', methods=["GET", "POST"])
 def login_page():
-    error = ''
     try:
-
         if request.method == "POST":
             page = request.form['page']
             return wiki(page)
-
         else:
             error = "Invalid credentials. Try Again."
             return render_template("index.html")
