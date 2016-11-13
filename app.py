@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for
 
 from BSParser import wiki
 
@@ -9,11 +9,13 @@ app = Flask(__name__)
 
 @app.route('/', methods=["GET",'POST'])
 def index():
-  if request.method == 'POST':
-    page = request.args.get('page')
-    return wiki(page)
   return render_template('index.html')
 
+@app.route('/response', methods=["GET",'POST'])
+def response():
+  page = request.form['page']
+  print(page)
+  return wiki(page)
 
 
 if __name__ == '__main__':

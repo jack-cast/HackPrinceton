@@ -75,3 +75,6 @@ def wiki(page):
 		return 'Success! Your path was: ' + str(path)
 	else:
 		return 'Your page does not lead to Philosophy because it gets caught in the following loop: ' + str(path)
+
+if __name__ == "__main__":
+	print(wiki("bottle"))
